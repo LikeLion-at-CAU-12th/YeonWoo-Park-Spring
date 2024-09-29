@@ -41,7 +41,6 @@ class MemberServiceTest {
 
     @Test
     public void testPrintMembersByPage() {
-        System.out.println("Hello");
         memberService.printMembersByPage(0, 10);
     }
 }
