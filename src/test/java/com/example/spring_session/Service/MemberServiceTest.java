@@ -25,7 +25,7 @@ class MemberServiceTest {
 
     // 테스트 실행 전, Member 100개 생성하는 코드
     @BeforeEach
-    public void SerUp() {
+    public void SetUp() {
         IntStream.range(0, 100).forEach(i -> {
             String username = "user" + random.nextInt(10000);
             String email = "user" + random.nextInt(10000) + "@example.com";
@@ -41,6 +41,6 @@ class MemberServiceTest {
 
     @Test
     public void testPrintMembersByPage() {
-        memberService.printMembersByPage(0, 10);
+        memberService.printMembersByPage(15, 10);
     }
 }
