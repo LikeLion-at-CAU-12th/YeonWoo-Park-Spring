@@ -26,4 +26,9 @@ public class ArticleLog extends BaseTimeEntity {
         this.content = content;
         this.article = article;
     }
+
+    public void updateArticleLog(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }

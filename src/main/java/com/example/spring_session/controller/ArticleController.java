@@ -2,6 +2,7 @@ package com.example.spring_session.controller;
 
 import com.example.spring_session.Service.ArticleService;
 import com.example.spring_session.dto.request.ArticleCreateRequestDto;
+import com.example.spring_session.dto.request.ArticleUpdateRequestDto;
 import com.example.spring_session.dto.response.ArticleResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,5 +31,11 @@ public class ArticleController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(articles);
+    }
+
+    @PatchMapping("") // Patch 메소드, URL 매핑
+    public ResponseEntity<Long> updateArticle(@RequestBody ArticleUpdateRequestDto requestDto) {
+        Long articleId = articleService.updateArticle(requestDto);
+        return new ResponseEntity<>(articleId, HttpStatus.CREATED);
     }
 }

@@ -38,4 +38,9 @@ public class Article {
         this.member = member;
         this.comments = comments != null ? comments : new ArrayList<>(); // 처음 게시글을 생성했을 땐 댓글 없을 수도 있음
     }
+
+    public void updateArticle(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
