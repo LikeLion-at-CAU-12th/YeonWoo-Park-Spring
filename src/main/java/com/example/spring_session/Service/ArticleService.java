@@ -2,6 +2,7 @@ package com.example.spring_session.Service;
 
 import com.example.spring_session.domain.*;
 import com.example.spring_session.dto.request.ArticleCreateRequestDto;
+import com.example.spring_session.dto.request.ArticleDeleteRequestDto;
 import com.example.spring_session.dto.request.ArticleUpdateRequestDto;
 import com.example.spring_session.dto.response.ArticleResponseDto;
 import com.example.spring_session.repository.*;
@@ -111,5 +112,22 @@ public class ArticleService {
             }
         }
         return article.getId();
+    }
+
+    public Long deleteArticle(ArticleDeleteRequestDto requestDto) {
+        Article article = articleRepository.findById(requestDto.getArticleId())
+                .orElseThrow(() -> new RuntimeException("해당 아이디를 가진 게시글이 존재하지 않습니다."));
+
+        // 게시글 카테고리 삭제
+        List<CategoryArticle> beforeCategoryArticles = categoryArticleRepository.findByArticle(article);
+        if (beforeCategoryArticles != null && !beforeCategoryArticles.isEmpty()) {
+            for (CategoryArticle beforeCategoryArticle : beforeCategoryArticles) {
+                categoryArticleRepository.delete(beforeCategoryArticle);
+            }
+        }
+
+        Long articleId = article.getId();
+        articleRepository.delete(article);
+        return articleId;
     }
 }

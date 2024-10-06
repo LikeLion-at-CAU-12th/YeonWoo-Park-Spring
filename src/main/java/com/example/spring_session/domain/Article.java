@@ -28,6 +28,9 @@ public class Article {
         this.member = member;
     }
 
+    @OneToOne(mappedBy = "article", cascade = CascadeType.ALL)
+    private ArticleLog articleLog;
+
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
