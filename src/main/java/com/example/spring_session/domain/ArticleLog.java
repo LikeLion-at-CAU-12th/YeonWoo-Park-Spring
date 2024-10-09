@@ -2,6 +2,7 @@ package com.example.spring_session.domain;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -18,4 +19,16 @@ public class ArticleLog extends BaseTimeEntity {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "article_id")
     private Article article;
+
+    @Builder
+    public ArticleLog(String title, String content, Article article) {
+        this.title = title;
+        this.content = content;
+        this.article = article;
+    }
+
+    public void updateArticleLog(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
