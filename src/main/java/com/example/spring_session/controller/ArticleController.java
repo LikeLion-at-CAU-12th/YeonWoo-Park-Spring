@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/articles") // URL 주소 매핑
 public class ArticleController {
 
     @Autowired // 의존성 주입
