@@ -1,6 +1,6 @@
 spring:
   profiles:
-    include: application-SECRET-KEY
+    include: SECRET-KEY
   datasource:
     url: jdbc:mysql://${database-host}:3306/${database-name} //변경 // jdbc:mysql://{RDS 엔드포인트}/{RDS 인스턴스 DB명}
     driver-class-name: com.mysql.cj.jdbc.Driver # jdbc
