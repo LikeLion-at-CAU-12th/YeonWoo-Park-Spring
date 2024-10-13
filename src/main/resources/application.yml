@@ -2,7 +2,7 @@ spring:
   profiles:
     include: SECRET-KEY
   datasource:
-    url: jdbc:mysql://${database-host}:3306/${database-name} //변경 // jdbc:mysql://{RDS 엔드포인트}/{RDS 인스턴스 DB명}
+    url: jdbc:mysql://${database-host}:3306/${database-name} # jdbc:mysql://{RDS 엔드포인트}/{RDS 인스턴스 DB명}
     driver-class-name: com.mysql.cj.jdbc.Driver # jdbc
     username: ${database-username} # RDS에서 생성한 유저네임
     password: ${database-password} # RDS에서 생성한 비밀번호
