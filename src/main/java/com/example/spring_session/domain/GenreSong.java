@@ -18,6 +18,6 @@ public class GenreSong {
     private Genre genre;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "song")
+    @JoinColumn(name = "song_id")
     private Song song;
 }
