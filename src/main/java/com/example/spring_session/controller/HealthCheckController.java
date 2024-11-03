@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController // restAPI 컨트롤러 선언
-@RequestMapping("/health") // 경로 설정
+@RequestMapping("/api/health") // 경로 설정
 public class HealthCheckController {
     @GetMapping("/hello") // 해당 위치 매핑
     public String hello() {
