@@ -6,6 +6,12 @@ build/
 !**/src/test/**/build/
 src/main/resources/application-SECRET-KEY.properties
 
+.DS_Store
+src/main/resources/application.yml
+src/test/.DS_Store
+src/test/java/.DS_Store
+src/test/java/com/.DS_Store
+
 ### STS ###
 .apt_generated
 .classpath
