@@ -7,11 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface MemberJpaRepository extends JpaRepository<Member, Long> {
     List<Member> findByUsername(String username);
     Member findOneByUsername(String username);
+    Optional<Member> findByEmail(String email);
 
     Page<Member> findByAgeGreaterThanEqual(int age, Pageable pageable); // 나이가 입력값보다 크거나 같은 요소
     Page<Member> findByUsernameStartingWith(String word, Pageable pageable); // 이름이 주어진 값으로 시작하는 경우
