@@ -24,3 +24,14 @@ spring:
 #        dialect: org.hibernate.dialect.MySQLDialect
   logging.level:
     org.hibernate.SQL: debug
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${client-id}
+            client-secret: ${client-password}
+            scope:
+              - email
+              - profile
+            redirect-uri: "http://localhost:8080/login/oauth2/code/google"

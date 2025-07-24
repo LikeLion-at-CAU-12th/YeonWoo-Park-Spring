@@ -1,5 +1,6 @@
 package com.example.spring_session.config;
 
+import com.example.spring_session.Service.CustomOAuth2UserService;
 import com.example.spring_session.Service.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +22,7 @@ import java.util.Collections;
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final CustomUserDetailsService customUserDetailsService; // UserDetailsService DI. 의존성 주입
+    private final CustomOAuth2UserService customOAuth2UserService;
 
     private static void corsAllow(CorsConfigurer<HttpSecurity> corsConfigurer) {
         corsConfigurer.configurationSource(request -> {
@@ -48,6 +50,12 @@ public class SecurityConfig {
                 .formLogin(Customizer.withDefaults()) // login 설정
                 .logout(Customizer.withDefaults()) // logout 설정
                 .userDetailsService(customUserDetailsService)
+                .oauth2Login(oauth -> oauth
+                        .userInfoEndpoint(userInfo -> userInfo
+                                .userService(customOAuth2UserService)
+                        )
+                )
+                .userDetailsService(customUserDetailsService);
         ;
 
         return http.build();
